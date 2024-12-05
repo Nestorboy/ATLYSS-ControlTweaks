@@ -3,5 +3,5 @@
     "version_number": "1.1.0",
     "website_url": "https://github.com/Nestorboy/ATLYSS-ControlTweaks",
     "description": "A mod with the aim of improving the Character Controller ux and quality of life.",
-    "dependencies": []
+    "dependencies": ["Nessie-EasySettings-1.0.0","BepInEx-BepInExPack-5.4.2100"]
 }

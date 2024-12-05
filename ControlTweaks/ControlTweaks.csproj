@@ -13,6 +13,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ModDependencies Include="Nessie-EasySettings-1.0.0"/>
+        <ModDependencies Include="BepInEx-BepInExPack-5.4.2100"/>
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="BepInEx.Analyzers"/>
         <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild"/>
         <PackageReference Include="BepInEx.Core"/>
@@ -31,9 +36,8 @@
         <Reference Include="Mirror">
             <HintPath>$(ATLYSS_MANAGED)\Mirror.dll</HintPath>
         </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\EasySettings\EasySettings.csproj"/>
+        <Reference Include="EasySettings">
+            <HintPath>libs\EasySettings.dll</HintPath>
+        </Reference>
     </ItemGroup>
 </Project>
