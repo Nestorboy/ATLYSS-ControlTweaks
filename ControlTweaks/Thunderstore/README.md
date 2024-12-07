@@ -18,4 +18,6 @@ A mod with the aim of improving the Character Controller ux and quality of life.
 5. Put ControlTweaks.dll in the BepInEx plugins folder
 
 ### Requirements
+
 - [BepInEx 5](https://github.com/BepInEx/BepInEx)
+- [EasySettings](https://github.com/Nestorboy/ATLYSS-EasySettings/)

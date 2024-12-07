@@ -6,4 +6,6 @@ A mod with the aim of improving the Character Controller ux and quality of life,
 2. Edit the ATLYSS_PATH property to point to your local game path where the executable can be found.
 
 ### Requirements
-* [BepInEx 5](https://github.com/BepInEx/BepInEx)
+
+- [BepInEx 5](https://github.com/BepInEx/BepInEx)
+- [EasySettings](https://github.com/Nestorboy/ATLYSS-EasySettings/)
