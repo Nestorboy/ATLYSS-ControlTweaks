@@ -43,7 +43,7 @@ public class ControlTweaksPlugin : BaseUnityPlugin
         ConfigWalkKey = Config.Bind(walkKeyDefinition, KeyCode.LeftControl, walkKeyDescription);
 
         var walkSpeedDefinition = new ConfigDefinition("Walking", "WalkSpeedMultiplier");
-        var walkSpeedDescription = new ConfigDescription("The speed multiplier that's applied when walking. Limited between 0 and 1.", new AcceptableValueRange<float>(0f, 1f));
+        var walkSpeedDescription = new ConfigDescription("The speed multiplier that's applied when walking. Limited between 0.1 and 0.9.", new AcceptableValueRange<float>(0.1f, 0.9f));
         ConfigWalkSpeed = Config.Bind(walkSpeedDefinition, 0.4f, walkSpeedDescription);
     }
 
