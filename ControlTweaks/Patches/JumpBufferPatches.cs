@@ -98,6 +98,8 @@ public static class JumpBufferPatches
         {
             if (!NetworkClient.active) return true;
 
+            if (!ControlTweaksPlugin.ConfigSoftHeadBump.Value) return true;
+
             if (!DetectHeadBump.IsHandleJumpParams) return true;
 
             __instance._airTime += 32f * Time.deltaTime;

@@ -15,6 +15,7 @@ public class ControlTweaksPlugin : BaseUnityPlugin
     internal static ConfigEntry<float> ConfigJumpBufferDuration;
     internal static ConfigEntry<KeyCode> ConfigWalkKey;
     internal static ConfigEntry<float> ConfigWalkSpeed;
+    internal static ConfigEntry<bool> ConfigSoftHeadBump;
 
     internal static float JumpBufferDuration => Mathf.Max(0f, ConfigJumpBufferDuration.Value);
     internal static KeyCode WalkKey => ConfigWalkKey.Value;
@@ -38,6 +39,10 @@ public class ControlTweaksPlugin : BaseUnityPlugin
         var bufferDescription = new ConfigDescription("How long a regular jump and ledge jump is buffered for. Limited between 0 and 5.", new AcceptableValueRange<float>(0f, 5f));
         ConfigJumpBufferDuration = Config.Bind(bufferDefinition, 0.25f, bufferDescription);
 
+        var headBumpDefinition = new ConfigDefinition("Jumping", "SoftHeadBump");
+        var headBumpDescription = new ConfigDescription("If the head bumping should be softened instead of instantly falling down.");
+        ConfigSoftHeadBump = Config.Bind(headBumpDefinition, true, headBumpDescription);
+
         var walkKeyDefinition = new ConfigDefinition("Walking", "WalkKeyBind");
         var walkKeyDescription = new ConfigDescription("The key that needs to be held down in order to walk.");
         ConfigWalkKey = Config.Bind(walkKeyDefinition, KeyCode.LeftControl, walkKeyDescription);
@@ -54,6 +59,8 @@ public class ControlTweaksPlugin : BaseUnityPlugin
         tab.AddHeader("Control Tweaks");
 
         tab.AddAdvancedSlider("Jump Buffer Duration", ConfigJumpBufferDuration);
+
+        tab.AddToggle("Soft Head Bump", ConfigSoftHeadBump);
 
         tab.AddKeyButton("Walk Key", ConfigWalkKey);
 
