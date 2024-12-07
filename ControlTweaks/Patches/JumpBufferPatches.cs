@@ -88,6 +88,45 @@ public static class JumpBufferPatches
         }
     }
 
+    [HarmonyPatch(typeof(PlayerMove), nameof(PlayerMove.Reset_PlayerControllerParams))]
+    private static class SoftHeadBump
+    {
+        // ReSharper disable once UnusedMember.Local
+        // ReSharper disable InconsistentNaming
+        [HarmonyPrefix]
+        private static bool ApplySoftHeadBump(PlayerMove __instance) // ReSharper restore InconsistentNaming
+        {
+            if (!NetworkClient.active) return true;
+
+            if (!DetectHeadBump.IsHandleJumpParams) return true;
+
+            __instance._airTime += 32f * Time.deltaTime;
+
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(PlayerMove), nameof(PlayerMove.Handle_JumpParams))]
+    private static class DetectHeadBump
+    {
+        internal static bool IsHandleJumpParams;
+        // ReSharper disable once UnusedMember.Local
+        // ReSharper disable InconsistentNaming
+        [HarmonyPrefix]
+        private static void HandleBufferedJump(PlayerMove __instance) // ReSharper restore InconsistentNaming
+        {
+            IsHandleJumpParams = true;
+        }
+
+        // ReSharper disable once UnusedMember.Local
+        // ReSharper disable InconsistentNaming
+        [HarmonyPostfix]
+        private static void HandleBufferedJumpEnd(PlayerMove __instance) // ReSharper restore InconsistentNaming
+        {
+            IsHandleJumpParams = false;
+        }
+    }
+
     [HarmonyPatch(typeof(PlayerClimbing), nameof(PlayerClimbing.Handle_LedgeClimbControl))]
     private static class LedgeJumpBufferPatch
     {
