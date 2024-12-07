@@ -7,6 +7,7 @@ A mod with the aim of improving the Character Controller ux and quality of life.
 - Jump and ledge jump buffering
 - Soft head bumps instead of falling down instantly when hitting your head
 - Walking slowly when pressing a key
+- Settings to configure these features in the in game menu
 
 ## Installing
 
