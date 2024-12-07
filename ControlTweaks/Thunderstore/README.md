@@ -12,10 +12,10 @@ A mod with the aim of improving the Character Controller ux and quality of life.
 ## Installing
 
 1. Install the latest version of BepInEx 5
-2. Download this mod (ControlTweaks.dll)
+2. Download this mod (ControlTweaks.dll) and its dependency (EasySettings.dll)
 3. Go to the games main directory (where the ATLYSS.exe can be found)
 4. Go to the BepInEx plugins folder (ATLYSS/BepInEx/plugins/)
-5. Put ControlTweaks.dll in the BepInEx plugins folder
+5. Put ControlTweaks.dll and EasySettings.dll in the BepInEx plugins folder
 
 ### Requirements
 
