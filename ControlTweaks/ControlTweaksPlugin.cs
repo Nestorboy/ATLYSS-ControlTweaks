@@ -15,10 +15,12 @@ public class ControlTweaksPlugin : BaseUnityPlugin
     internal static ConfigEntry<float> ConfigJumpBufferDuration;
     internal static ConfigEntry<bool> ConfigSoftHeadBump;
     internal static ConfigEntry<KeyCode> ConfigWalkKey;
+    internal static ConfigEntry<bool> ConfigWalkToggle;
     internal static ConfigEntry<float> ConfigWalkSpeed;
 
     internal static float JumpBufferDuration => Mathf.Max(0f, ConfigJumpBufferDuration.Value);
     internal static KeyCode WalkKey => ConfigWalkKey.Value;
+    internal static bool WalkToggle => ConfigWalkToggle.Value;
     internal static float WalkSpeed => Mathf.Clamp01(ConfigWalkSpeed.Value);
 
     private void Awake()
@@ -46,6 +48,10 @@ public class ControlTweaksPlugin : BaseUnityPlugin
         var walkKeyDefinition = new ConfigDefinition("Walking", "WalkKeyBind");
         var walkKeyDescription = new ConfigDescription("The key that needs to be held down in order to walk.");
         ConfigWalkKey = Config.Bind(walkKeyDefinition, KeyCode.LeftControl, walkKeyDescription);
+
+        var walkToggleDefinition = new ConfigDefinition("Walking", "WalkToggle");
+        var walkToggleDescription = new ConfigDescription("If pressing the walk key should toggle walking.");
+        ConfigWalkToggle = Config.Bind(walkToggleDefinition, false, walkToggleDescription);
 
         var walkSpeedDefinition = new ConfigDefinition("Walking", "WalkSpeedMultiplier");
         var walkSpeedDescription = new ConfigDescription("The speed multiplier that's applied when walking. Limited between 0.1 and 0.9.", new AcceptableValueRange<float>(0.1f, 0.9f));
