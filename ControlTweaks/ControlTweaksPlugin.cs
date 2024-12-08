@@ -70,6 +70,8 @@ public class ControlTweaksPlugin : BaseUnityPlugin
 
         tab.AddKeyButton("Walk Key", ConfigWalkKey);
 
+        tab.AddToggle("Walk Toggle", ConfigWalkToggle);
+
         tab.AddAdvancedSlider("Walk Speed", ConfigWalkSpeed);
     }
 }
