@@ -13,9 +13,9 @@ public class ControlTweaksPlugin : BaseUnityPlugin
     internal static new ManualLogSource Logger;
 
     internal static ConfigEntry<float> ConfigJumpBufferDuration;
+    internal static ConfigEntry<bool> ConfigSoftHeadBump;
     internal static ConfigEntry<KeyCode> ConfigWalkKey;
     internal static ConfigEntry<float> ConfigWalkSpeed;
-    internal static ConfigEntry<bool> ConfigSoftHeadBump;
 
     internal static float JumpBufferDuration => Mathf.Max(0f, ConfigJumpBufferDuration.Value);
     internal static KeyCode WalkKey => ConfigWalkKey.Value;
