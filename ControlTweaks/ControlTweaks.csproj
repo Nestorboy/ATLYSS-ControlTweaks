@@ -13,8 +13,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ModDependencies Include="Nessie-EasySettings-1.1.3"/>
-        <ModDependencies Include="BepInEx-BepInExPack-5.4.2100"/>
+        <ModDependencies Include="Nessie-EasySettings-1.1.3" Visible="false"/>
+        <ModDependencies Include="BepInEx-BepInExPack-5.4.2100" Visible="false"/>
     </ItemGroup>
 
     <ItemGroup>
