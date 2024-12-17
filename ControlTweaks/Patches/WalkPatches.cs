@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Reflection;
+using HarmonyLib;
 using Mirror;
 using UnityEngine;
 
@@ -9,9 +10,16 @@ public static class WalkPatches
     private static ValueChange<bool> _walkToggleState;
     private static bool _isWalkingToggled;
 
-    [HarmonyPatch(typeof(PlayerMove), "<Handle_MovementControl>g__Apply_MovementParams|87_2")]
+    [HarmonyPatch(typeof(PlayerMove))]
     private static class WalkPatch
     {
+        // ReSharper disable once UnusedMember.Local
+        [HarmonyTargetMethod]
+        public static MethodBase FindApplyMovementParams()
+        {
+            return AccessTools.FirstMethod(typeof(PlayerMove), method => method.Name.Contains("Apply_MovementParams"));
+        }
+
         // ReSharper disable once UnusedMember.Local
         // ReSharper disable InconsistentNaming
         [HarmonyPrefix]
