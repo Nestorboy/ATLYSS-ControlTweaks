@@ -81,7 +81,7 @@ public static class JumpBufferPatches
                 force = instance._underwaterJumpForce;
             }
 
-            instance.Init_Jump(force, instance._worldSpaceInput == Vector3.zero ? 0f : 1.65f, 0f);
+            instance.Init_Jump(force, instance._worldSpaceInput == Vector3.zero ? 0f : 1.65f, 0f, true);
 
             instance._isJumpInput = true;
             instance._pCombat._airAttackLock = 0f;

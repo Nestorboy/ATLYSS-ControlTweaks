@@ -38,7 +38,7 @@ public static class WalkPatches
         }
     }
 
-    [HarmonyPatch(typeof(PlayerVisual), nameof(PlayerVisual.Iterate_AnimationCondition))]
+    [HarmonyPatch(typeof(PlayerVisual), nameof(PlayerVisual.OnUpdate_AnimationCondition))]
     private static class AnimationPatches
     {
         // ReSharper disable once UnusedMember.Local
