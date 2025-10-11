@@ -175,7 +175,7 @@ public static class JumpBufferPatches
                 instance._ledgeGrabBuffer = 0.12f;
                 instance.transform.rotation = Quaternion.LookRotation(((instance._hit.point - instance.transform.position) with
                 {
-                    y = 0.0f
+                    y = 0.0f,
                 }).normalized);
 
                 if (!instance._parentGroundTypeObject._canLedgeClimb)
