@@ -148,7 +148,7 @@ public static class JumpBufferPatches
                 _inputJump.UpdateState(false);
             }
 
-            if (!NetworkClient.active || __instance._player._currentPlayerAction != PlayerAction.IDLE || __instance._climbAttachBuffer > 0.0 || __instance._ropeParent || __instance._pCombat._isAirAttacked || __instance._pCombat._localAirAttackInput || __instance._pCombat._isChargingWeapon || __instance._pCombat._isBlocking || __instance._pCombat._localBlockingInput || __instance._pMove._lockControlMidair || __instance._pMove._lockControlBuffer > 0.0)
+            if (!NetworkClient.active || __instance._player._currentPlayerAction != PlayerAction.IDLE || __instance._climbAttachBuffer > 0.0 || __instance._ropeParent || __instance._pCombat._isAirAttacked || __instance._pCombat._localAirAttackInput || __instance._pCombat._isChargingWeapon || __instance._pCombat._isBlocking || __instance._pCombat._localBlockingInput || __instance._pMove._lockControlMidair || __instance._pMove._lockControlBuffer > 0.0 || __instance._pMove._attackForce > 0.0)
                 return true;
 
             // Only replace local function.
