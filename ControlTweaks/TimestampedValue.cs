@@ -17,7 +17,10 @@ public struct TimestampedValue<T> where T : struct
 
     public void UpdateState(T state)
     {
-        if (state.Equals(Value)) return;
+        if (state.Equals(Value))
+        {
+            return;
+        }
 
         OnChanged(state);
     }

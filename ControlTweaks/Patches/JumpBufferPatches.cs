@@ -36,10 +36,14 @@ public static class JumpBufferPatches
         private static void HandleBufferedJump(PlayerMove __instance) // ReSharper restore InconsistentNaming
         {
             if (!_canJump)
+            {
                 return;
+            }
 
             if (!NetworkClient.active || __instance._freezeMovementBuffer > 0f)
+            {
                 return;
+            }
 
             // Regular jump was performed.
             if (_inputJumpDown)
@@ -76,7 +80,9 @@ public static class JumpBufferPatches
             if (instance._pWater._isInWater &&
                 !instance._pWater._canSwimUp &&
                 instance._currentMovementAction == MovementAction.JUMP)
+            {
                 return;
+            }
 
             if (instance._pWater._isInWater &&
                 instance._airTime > 1.5f &&
@@ -100,11 +106,12 @@ public static class JumpBufferPatches
         [HarmonyPrefix]
         private static bool ApplySoftHeadBump(PlayerMove __instance) // ReSharper restore InconsistentNaming
         {
-            if (!NetworkClient.active) return true;
-
-            if (!ControlTweaksPlugin.ConfigSoftHeadBump.Value) return true;
-
-            if (!DetectHeadBump.IsHandleJumpParams) return true;
+            if (!NetworkClient.active ||
+                !ControlTweaksPlugin.ConfigSoftHeadBump.Value ||
+                !DetectHeadBump.IsHandleJumpParams)
+            {
+                return true;
+            }
 
             __instance._airTime += 32f * Time.deltaTime;
 
@@ -164,7 +171,9 @@ public static class JumpBufferPatches
                 __instance._pMove._lockControlMidair ||
                 __instance._pMove._lockControlBuffer > 0.0 ||
                 __instance._pMove._attackForce > 0.0)
+            {
                 return true;
+            }
 
             // Only replace local function.
             if (__instance._onLedge)
@@ -194,10 +203,14 @@ public static class JumpBufferPatches
                 }).normalized);
 
                 if (!instance._parentGroundTypeObject._canLedgeClimb)
+                {
                     instance.Init_JumpOffLedgeGrab(20f, -25.5f, 45.5f);
+                }
 
                 if (!_inputJump.PressedWithinUnscaled(ControlTweaksPlugin.JumpBufferDuration))
+                {
                     return;
+                }
 
                 float forwardForce = instance._parentGroundTypeObject._noForwardForceOnLedgeJump ? instance._ledgeJumpUpForce : 0f;
                 instance.Init_JumpOffLedgeGrab(instance._ledgeJumpUpForce, forwardForce, 65f);

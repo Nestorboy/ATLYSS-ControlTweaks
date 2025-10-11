@@ -26,7 +26,10 @@ public static class WalkPatches
         private static void ApplyWalkModifier(PlayerMove __instance, out Vector3 __state) // ReSharper restore InconsistentNaming
         {
             __state = __instance._worldSpaceInput;
-            if (IsWalking()) __instance._worldSpaceInput *= ControlTweaksPlugin.WalkSpeed;
+            if (IsWalking())
+            {
+                __instance._worldSpaceInput *= ControlTweaksPlugin.WalkSpeed;
+            }
         }
 
         // ReSharper disable once UnusedMember.Local
@@ -47,10 +50,15 @@ public static class WalkPatches
         private static void PatchWalkAnimation(PlayerVisual __instance) // ReSharper restore InconsistentNaming
         {
             if (!NetworkClient.active || !__instance._playerRaceModel || !__instance._visualAnimator)
+            {
                 return;
+            }
 
             float speed = __instance._playerRaceModel._baseMovementMultiplier * __instance._movementAnimSpeedMod;
-            if (IsWalking()) speed *= ControlTweaksPlugin.WalkSpeed;
+            if (IsWalking())
+            {
+                speed *= ControlTweaksPlugin.WalkSpeed;
+            }
 
             __instance._visualAnimator.SetFloat("_movAnimSpd", Mathf.Max(0.75f, speed));
         }
