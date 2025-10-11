@@ -73,10 +73,14 @@ public static class JumpBufferPatches
         private static void InputJump(PlayerMove instance)
         {
             float force = instance._standardJumpForce;
-            if (instance._pWater._isInWater && !instance._pWater._canSwimUp && instance._currentMovementAction == MovementAction.JUMP)
+            if (instance._pWater._isInWater &&
+                !instance._pWater._canSwimUp &&
+                instance._currentMovementAction == MovementAction.JUMP)
                 return;
 
-            if (instance._pWater._isInWater && instance._airTime > 1.5f && (instance._currentMovementAction == MovementAction.JUMP || instance._currentMovementAction == MovementAction.FALL))
+            if (instance._pWater._isInWater &&
+                instance._airTime > 1.5f &&
+                instance._currentMovementAction is MovementAction.JUMP or MovementAction.FALL)
             {
                 force = instance._underwaterJumpForce;
             }
@@ -148,7 +152,18 @@ public static class JumpBufferPatches
                 _inputJump.UpdateState(false);
             }
 
-            if (!NetworkClient.active || __instance._player._currentPlayerAction != PlayerAction.IDLE || __instance._climbAttachBuffer > 0.0 || __instance._ropeParent || __instance._pCombat._isAirAttacked || __instance._pCombat._localAirAttackInput || __instance._pCombat._isChargingWeapon || __instance._pCombat._isBlocking || __instance._pCombat._localBlockingInput || __instance._pMove._lockControlMidair || __instance._pMove._lockControlBuffer > 0.0 || __instance._pMove._attackForce > 0.0)
+            if (!NetworkClient.active ||
+                __instance._player._currentPlayerAction != PlayerAction.IDLE ||
+                __instance._climbAttachBuffer > 0.0 ||
+                __instance._ropeParent ||
+                __instance._pCombat._isAirAttacked ||
+                __instance._pCombat._localAirAttackInput ||
+                __instance._pCombat._isChargingWeapon ||
+                __instance._pCombat._isBlocking ||
+                __instance._pCombat._localBlockingInput ||
+                __instance._pMove._lockControlMidair ||
+                __instance._pMove._lockControlBuffer > 0.0 ||
+                __instance._pMove._attackForce > 0.0)
                 return true;
 
             // Only replace local function.
