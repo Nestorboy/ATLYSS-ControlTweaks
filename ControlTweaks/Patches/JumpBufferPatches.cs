@@ -18,13 +18,13 @@ public static class JumpBufferPatches
         [HarmonyPrefix]
         private static void RecordInputPressed(PlayerMove __instance) // ReSharper restore InconsistentNaming
         {
-            _inputJumpDown = Input.GetKeyDown(InputControlManager.current._jump) || (GamepadInput.GetButtonDown(GamepadButton.Button_South, InputControlManager.current._setGamepadInfo) && !__instance._player._inUI);
+            _inputJumpDown = Input.GetKeyDown(InputControlManager.current._jump) || (GamepadInput.GetButton(GamepadButton.Button_South) && !__instance._player._inUI);
             _canJump = CanJumpInput(__instance);
             if (_inputJumpDown)
             {
                 _inputJump.UpdateState(true);
             }
-            else if (Input.GetKeyUp(InputControlManager.current._jump) || (GamepadInput.GetButtonUp(GamepadButton.Button_South, InputControlManager.current._setGamepadInfo) && !__instance._player._inUI))
+            else if (Input.GetKeyUp(InputControlManager.current._jump) || (GamepadInput.GetButton(GamepadButton.Button_South) && !__instance._player._inUI))
             {
                 _inputJump.UpdateState(false);
             }
@@ -150,11 +150,11 @@ public static class JumpBufferPatches
         [HarmonyPrefix]
         private static bool RecordInputPressed(PlayerClimbing __instance) // ReSharper restore InconsistentNaming
         {
-            if (Input.GetKeyDown(InputControlManager.current._jump) || GamepadInput.GetButtonDown(GamepadButton.Button_South, InputControlManager.current._setGamepadInfo))
+            if (Input.GetKeyDown(InputControlManager.current._jump) || GamepadInput.GetButtonDown(GamepadButton.Button_South))
             {
                 _inputJump.UpdateState(true);
             }
-            else if (Input.GetKeyUp(InputControlManager.current._jump) || GamepadInput.GetButtonUp(GamepadButton.Button_South, InputControlManager.current._setGamepadInfo))
+            else if (Input.GetKeyUp(InputControlManager.current._jump) || GamepadInput.GetButtonUp(GamepadButton.Button_South))
             {
                 _inputJump.UpdateState(false);
             }
