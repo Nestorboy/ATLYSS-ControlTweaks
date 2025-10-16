@@ -22,9 +22,6 @@
                 DestinationFiles="@(ThunderstoreAssemblyInclude->'$(IntermediateOutputPath)Thunderstore/plugins/%(Identity)')"
                 ContinueOnError="true" />
         <Copy
-                SourceFiles="$(ThunderstoreDirectory)manifest.json"
-                DestinationFiles="$(IntermediateOutputPath)Thunderstore/manifest.json" />
-        <Copy
                 SourceFiles="$(ThunderstoreDirectory)README.md"
                 DestinationFiles="$(IntermediateOutputPath)Thunderstore/README.md" />
         <Copy
